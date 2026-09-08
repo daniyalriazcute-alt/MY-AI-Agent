@@ -132,11 +132,23 @@ CUSTOM_CSS = textwrap.dedent(
         opacity: 1 !important;
     }
 
-    /* File uploader */
+    /* File uploader fixes */
     div[data-testid="stFileUploaderDropzone"] {
         background: rgba(255,255,255,0.04) !important;
         border: 1px dashed rgba(127,90,240,0.4) !important;
         border-radius: 12px !important;
+    }
+    div[data-testid="stFileUploaderDropzone"] button {
+        background: rgba(127, 90, 240, 0.25) !important;
+        border: 1px solid rgba(127, 90, 240, 0.6) !important;
+        color: #FFFFFF !important;
+    }
+    div[data-testid="stFileUploaderDropzone"] button * {
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
+    }
+    div[data-testid="stFileUploaderDropzone"] span {
+        color: #EAEAF2 !important;
     }
 
     /* General inputs */
