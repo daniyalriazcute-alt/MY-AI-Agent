@@ -110,7 +110,7 @@ CUSTOM_CSS = textwrap.dedent(
         color: var(--nova-text) !important;
     }
 
-    /* Chat input — readable dark text on light container */
+    /* Chat input */
     div[data-testid="stChatInput"] {
         background: rgba(255, 255, 255, 0.95) !important;
         border: 1px solid rgba(127, 90, 240, 0.45) !important;
@@ -132,23 +132,38 @@ CUSTOM_CSS = textwrap.dedent(
         opacity: 1 !important;
     }
 
-    /* File uploader fixes */
-    div[data-testid="stFileUploaderDropzone"] {
-        background: rgba(255,255,255,0.04) !important;
-        border: 1px dashed rgba(127,90,240,0.4) !important;
+    /* Complete File Uploader Overhaul */
+    div[data-testid="stFileUploader"] {
+        background: #100C1A !important;
+        padding: 10px !important;
         border-radius: 12px !important;
+        border: 1px solid rgba(127, 90, 240, 0.3) !important;
     }
-    div[data-testid="stFileUploaderDropzone"] button {
-        background: rgba(127, 90, 240, 0.25) !important;
-        border: 1px solid rgba(127, 90, 240, 0.6) !important;
-        color: #FFFFFF !important;
+    div[data-testid="stFileUploaderDropzone"] {
+        background: #181428 !important;
+        border: 1px dashed #7F5AF0 !important;
+        border-radius: 10px !important;
     }
-    div[data-testid="stFileUploaderDropzone"] button * {
+    div[data-testid="stFileUploaderDropzone"] * {
         color: #FFFFFF !important;
         -webkit-text-fill-color: #FFFFFF !important;
     }
-    div[data-testid="stFileUploaderDropzone"] span {
-        color: #EAEAF2 !important;
+    div[data-testid="stFileUploaderDropzone"] button,
+    section[data-testid="stSidebar"] [data-testid="stFileUploader"] button {
+        background-color: #7F5AF0 !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 6px 14px !important;
+    }
+    div[data-testid="stFileUploaderDropzone"] button *,
+    section[data-testid="stSidebar"] [data-testid="stFileUploader"] button * {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+        font-weight: 700 !important;
+    }
+    div[data-testid="stFileUploaderDropzoneInstructions"] small {
+        color: #B7B7D1 !important;
+        -webkit-text-fill-color: #B7B7D1 !important;
     }
 
     /* General inputs */
@@ -444,7 +459,6 @@ def run_agent(user_input: str, status_box=None) -> str:
 
         msg = response.choices[0].message
 
-        # Direct answer without invoking tools
         if not msg.tool_calls:
             return msg.content or "I couldn't produce an answer."
 
@@ -469,7 +483,6 @@ def run_agent(user_input: str, status_box=None) -> str:
                 {"role": "tool", "tool_call_id": call.id, "name": fn_name, "content": str(result)[:4000]}
             )
 
-    # Fallback: synthesize direct answer if loop completes without direct return
     try:
         messages.append({
             "role": "user",
