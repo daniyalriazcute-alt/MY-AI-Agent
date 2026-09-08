@@ -109,25 +109,25 @@ CUSTOM_CSS = textwrap.dedent(
         color: var(--nova-text) !important;
     }
 
-    /* Chat input — force visible text/placeholder */
+    /* Chat input — readable black text on bright background */
     div[data-testid="stChatInput"] {
-        background: rgba(255,255,255,0.05) !important;
-        border: 1px solid rgba(127,90,240,0.35) !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        border: 1px solid rgba(127, 90, 240, 0.45) !important;
         border-radius: 14px !important;
     }
     div[data-testid="stChatInput"] * {
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
     }
     div[data-testid="stChatInput"] textarea {
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
         background: transparent !important;
-        caret-color: #ffffff !important;
+        caret-color: #000000 !important;
     }
     div[data-testid="stChatInput"] textarea::placeholder {
-        color: var(--nova-muted) !important;
-        -webkit-text-fill-color: var(--nova-muted) !important;
+        color: #555555 !important;
+        -webkit-text-fill-color: #555555 !important;
         opacity: 1 !important;
     }
 
