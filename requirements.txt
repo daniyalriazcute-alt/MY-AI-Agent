@@ -1,8 +1,8 @@
 streamlit
 groq
-duckduckgo_search
+googlesearch-python
 asteval
 faiss-cpu
 fastembed
-numpy
 pypdf
+numpy
